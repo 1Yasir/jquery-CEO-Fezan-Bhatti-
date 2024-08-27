@@ -8,4 +8,19 @@ $(document).ready(function () {
     $("#unOrderList ul li").click(function () {
         $(this).hide();
     });
+
+    // Select paragraph  and add multipal eveent at a time 
+
+    $("#paragraph p").on({
+        mouseenter: function () {
+            $(this).css("background-color", "lightgray");
+        },
+        mouseleave : function(){
+            $(this).css("background-color",  "lightblue")
+        },
+        click : function(){
+            $(this).css("background-color" , "crimson")
+        }
+    })
+
 });
