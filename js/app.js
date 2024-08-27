@@ -9,7 +9,7 @@ $(document).ready(function () {
         $(this).hide();
     });
 
-    // Select paragraph  and add multipal eveent at a time 
+// Select all paragraph elements and add multiple events at the same time
 
     $("#paragraph p").on({
         mouseenter: function () {
