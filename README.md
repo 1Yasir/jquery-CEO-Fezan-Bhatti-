@@ -1,1 +1,1 @@
-# hello world
+# We learned about this repository on jQuery.
