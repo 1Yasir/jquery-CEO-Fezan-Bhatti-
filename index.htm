@@ -11,49 +11,46 @@
     </head>
     <body>
 
-        <h1 class="text-center bg-dark text-white py-2">Hello JQUERY</h1>
-        <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <button class="btn btn-outline-success"
-                        id="alertMessage">alert Message</button>
-                    <hr />
-                    <!-- print unOrderList   -->
-                    <div id="unOrderList">
-                        <ul class="my-3">
-                            <li class="btn btn-outline-dark"
-                                title="click me">lorem 1</li>
-                            <li class="btn btn-outline-dark"
-                                title="click me">lorem 2</li>
-                            <li class="btn btn-outline-dark"
-                                title="click me">lorem 3</li>
-                            <li class="btn btn-outline-dark"
-                                title="click me">lorem 4</li>
-                            <li class="btn btn-outline-dark"
-                                title="click me">lorem 5</li>
-                        </ul>
+        <header class="text-center bg-light py-2 m-0 position-fixed w-100" style="z-index: 999;">
+            <h1>jQuery</h1>
+        </header>
+
+        <section class="hero">
+            <div class="container h-100">
+                <div
+                    class="row h-100 justify-content-center align-items-center">
+                    <div class="col-12 col-md-6">
+                        <h2 id="typing-effect"> jQuery is a
+                            JavaScript Library. </h2>
+
                     </div>
+                    <div class="col-12 col-md-6">
 
-                    <hr />
-
-                    <!-- print paragraph  -->
-
-                    <div id="paragraph">
-                        <p class="d-inline-block rounded-pill border p-2">lorem
-                            Ipsum dolor. 1</p>
-                        <p class="d-inline-block rounded-pill border p-2">lorem
-                            Ipsum. 2</p>
-                        <p class="d-inline-block rounded-pill border p-2">lorem
-                            Ipsum. 3</p>
-                        <p class="d-inline-block rounded-pill border p-2">lorem
-                            Ipsum dolor. 4</p>
-                        <p class="d-inline-block rounded-pill border p-2">lorem
-                            Ipsum dolor. 5</p>
+                        <img src="./images/jquery.png" alt="jquery"
+                            class="w-100 h-100 img" style="object-fit: contain;">
                     </div>
-
                 </div>
             </div>
-        </div>
+
+        </section>
+
+        <section class="jquery-effects section">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2 >jQuery Effects - Hide , Show , Toggle </h2>
+                        <p >With jQuery, you can hide and show HTML elements with the hide() ,  show() , Toggle() methods:   </p>
+                        <div class="btn-groups mb-3">
+                            <button class="btn btn-outline-primary" id="hide">Hide </button>
+                            <button class="btn btn-outline-primary" id="show">Show </button>
+                            <button class="btn btn-outline-primary" id="toggle">Toggle </button>
+                        </div>
+                        <p id="methods-performance">jQuery Effects - Hide and Show  </p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- jQuery CDN -->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
