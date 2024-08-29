@@ -106,11 +106,49 @@
         <button id="fetchDataBtn" class="btn btn-outline-dark">Fetch User Data</button>
         <div class="container my-3">
             <div id="userData" class="row">
+                <!-- Fetched user data will be displayed here -->
 
         </div>
-            <!-- Fetched user data will be displayed here -->
         </div>
      </section>
+
+     <!-- crud application application  -->
+      <section class="crud-application">
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">User Management CRUD App with jQuery</h1>
+            
+            <!-- Form to Add/Edit User -->
+            <form id="userForm" class="mb-4">
+                <input type="hidden" id="userId">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="addUserBtn">Add User</button>
+                <button type="submit" class="btn btn-success d-none" id="updateUserBtn">Update User</button>
+            </form>
+            
+            <!-- User List -->
+            <h2 class="text-center mb-3">User List</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    <!-- Users will be dynamically populated here -->
+                </tbody>
+            </table>
+        </div>
+      </section>
 
         <!-- jQuery CDN -->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

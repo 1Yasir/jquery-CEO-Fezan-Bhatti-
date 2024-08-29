@@ -38,7 +38,8 @@ $(document).ready(function () {
             method: "GET",
             success: function (response) {
                 $('#userData').html('');  // Clear previous data
-                $.each(response, function (index, user) {
+                $.each(response, function (_, user) {
+
                     // Display user data in the div
                     $('#userData').append(`
                         <div class="col-sm-6 col-md-4 col-lg-4  mb-3">
@@ -52,7 +53,6 @@ $(document).ready(function () {
                     `);
                 });
 
-                console.log(response);
 
             },
             error: function (xhr, status, error) {  // Callback function on error
@@ -60,6 +60,89 @@ $(document).ready(function () {
             }
         })
     })
+
+
+    // crud application
+    
+      // Dummy data to simulate server response
+      let users = [
+        { id: 1, name: 'John Doe', email: 'john@example.com' },
+        { id: 2, name: 'Jane Smith', email: 'jane@example.com' }
+    ];
+
+    // Function to populate user data in table
+    function populateUsers() {
+        $('#userTableBody').empty(); // Clear the table body
+
+        users.forEach(user => {
+            $('#userTableBody').append(`
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm editBtn" data-id="${user.id}">Edit</button>
+                        <button class="btn btn-danger btn-sm deleteBtn" data-id="${user.id}">Delete</button>
+                    </td>
+                </tr>
+            `);
+        });
+    }
+
+    // Initial call to populate user data
+    populateUsers();
+
+    // Add or Update user
+    $('#userForm').on('submit', function (e) {
+        e.preventDefault();
+        const name = $('#name').val();
+        const email = $('#email').val();
+        const userId = $('#userId').val(); // Hidden input to store user ID
+        
+        if (userId === '') {
+            // Add new user
+            const newUser = {
+                id: users.length + 1,
+                name,
+                email
+            };
+            users.push(newUser);
+            alert('User added successfully!');
+        } else {
+            // Update existing user
+            const id = parseInt(userId);
+            users = users.map(user => user.id === id ? { ...user, name, email } : user);
+            alert('User updated successfully!');
+            $('#addUserBtn').removeClass('d-none'); // Show Add button
+            $('#updateUserBtn').addClass('d-none'); // Hide Update button
+        }
+
+        $('#userForm')[0].reset(); // Clear the form
+        $('#userId').val(''); // Clear hidden user ID field
+        populateUsers(); // Refresh the user table
+    });
+
+    // Edit user
+    $(document).on('click', '.editBtn', function () {
+        const id = $(this).data('id');
+        const user = users.find(user => user.id === id);
+        
+        if (user) {
+            $('#userId').val(user.id); // Set hidden user ID field
+            $('#name').val(user.name); // Set name field
+            $('#email').val(user.email); // Set email field
+            $('#addUserBtn').addClass('d-none'); // Hide Add button
+            $('#updateUserBtn').removeClass('d-none'); // Show Update button
+        }
+    });
+
+    // Delete user
+    $(document).on('click', '.deleteBtn', function () {
+        const id = $(this).data('id');
+        users = users.filter(user => user.id !== id);
+        alert('User deleted successfully!');
+        populateUsers(); // Refresh the user table
+    });
 
 
 
