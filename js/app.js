@@ -1,11 +1,11 @@
-import { typeEffect , applyEffect } from "./app.function.js";
-import { aboutJQuery , jQueryEffects } from "./app.store.js";
+import { typeEffect, applyEffect } from "./app.function.js";
+import { aboutJQuery, jQueryEffects } from "./app.store.js";
 
 $(document).ready(function () {
-// Start typing effect
-typeEffect(aboutJQuery, "#typing-effect", 100, 500); // (value in array , selector , typing speed , nextTextDelay )
-typeEffect(jQueryEffects.hideShowToggle, "#j-query-effects-hide-show-toggle", 300, 1000);
-typeEffect(jQueryEffects.fades, "#j-query-effects-fades", 300, 1000);
+    // Start typing effect
+    typeEffect(aboutJQuery, "#typing-effect", 100, 500); // (value in array , selector , typing speed , nextTextDelay )
+    typeEffect(jQueryEffects.hideShowToggle, "#j-query-effects-hide-show-toggle", 300, 1000);
+    typeEffect(jQueryEffects.fades, "#j-query-effects-fades", 300, 1000);
 
 
 
@@ -29,8 +29,38 @@ typeEffect(jQueryEffects.fades, "#j-query-effects-fades", 300, 1000);
 
 
     });
-    
-        
+
+
+    //  data fetch jsonPlaceholder using AJAX technique and display the web page   -->
+    $("#fetchDataBtn").click(function () {
+        $.ajax({
+            url: 'https://jsonplaceholder.typicode.com/users',
+            method: "GET",
+            success: function (response) {
+                $('#userData').html('');  // Clear previous data
+                $.each(response, function (index, user) {
+                    // Display user data in the div
+                    $('#userData').append(`
+                        <div class="col-sm-6 col-md-4 col-lg-4  mb-3">
+                        <div class = "border shadow-sm rounded-3">
+                            <h3>${user.name}</h3>
+                            <p><strong>Email:</strong> ${user.email}</p>
+                            <p><strong>Phone:</strong> ${user.phone}</p>
+                        </div>
+                        </div>
+                        
+                    `);
+                });
+
+                console.log(response);
+
+            },
+            error: function (xhr, status, error) {  // Callback function on error
+                $('#userData').html('<p>An error occurred while fetching data.</p>');
+            }
+        })
+    })
+
 
 
 
