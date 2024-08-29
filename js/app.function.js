@@ -28,4 +28,38 @@ function typeEffect(texts, selector, typingSpeed = 100, nextTextDelay = 500) {
     startTyping(); // Initialize the typing effect
 }
 
-export { typeEffect };
+
+function applyEffect(buttonSelector, targetSelector, action, delay = 500) {
+    $(buttonSelector).click(function () {
+        switch (action) {
+            case "hide":
+                $(targetSelector).hide(delay);
+                break;
+            case "show":
+                $(targetSelector).show(delay);
+                break;
+            case "toggle":
+                $(targetSelector).toggle(delay);
+                break;
+            case "fadeIn":
+                $(targetSelector).fadeIn(delay);
+                break;
+            case "fadeOut":
+                $(targetSelector).fadeOut(delay);
+                break;
+            case "fadeToggle":
+                $(targetSelector).fadeToggle(delay);
+                break;
+            case "fadeTo":
+                $(targetSelector).fadeTo("slow", 0.5);
+                break;
+
+
+            default:
+                console.error("Invalid action provided!");
+        }
+    });
+
+}
+
+export { typeEffect, applyEffect };

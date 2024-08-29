@@ -13,6 +13,9 @@ const aboutJQuery = [
 ];
 
 
-const jQueryEffects = ['Hide', "Show", "Toggle"];
+const jQueryEffects ={
+    hideShowToggle : ['Hide', "Show", "Toggle"] , 
+    fades :["FadeIn" , "FadeOut","FadeToggle","FadeTo"]
+} 
 
 export { aboutJQuery , jQueryEffects };
